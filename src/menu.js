@@ -2,46 +2,47 @@ import { Menu } from './core/menu'
 // import { TimerModule } from './modules/timer.module'
 
 export class ContextMenu extends Menu {
-    constructor(selector, clickPosition) {
+    constructor(selector) {
         super(selector)
-        this.el.innerHTML = ''
-
-        const modules = [
+        // Массив со всеми модулями, которые будут в контекстном меню
+        this.modules = [
+            // Все модули указываются по примеру через запятую, вверху только заимпортить
             // new TimerModule('timer', 'Запустить таймер'),
         ]
-        modules.forEach(module => this.add(module))
+        // Вызов на каждом модуле метода по добавлению его в контекстное меню
+        this.modules.forEach(module => this.add(module))
+        // Установка события по клику на каждый элемент меню
+        this.setupEventListeners()
+    }
 
-        const listElements = document.querySelectorAll('.menu-item')
-        listElements.forEach(item => item.addEventListener('click', (event) => {
-            const selectedModule = modules.find(m => m.type === event.target.dataset.type)
+    setupEventListeners() {
+        this.el.addEventListener('click', (event) => {
+            const selectedModule = this.modules.find(m => m.type === event.target.dataset.type)
             if (selectedModule) {
                 selectedModule.trigger()
                 this.close()
             }
-        }))
-
-        this.open()
-        this.setPosition(clickPosition)
+        })
     }
 
-    setPosition(clickPosition) {
-        const { clickX, clickY } = clickPosition
+    setPosition(event) {
+        const { clientX: clickX, clientY: clickY } = event // Координаты клика
+        const { offsetWidth: menuWidth, offsetHeight: menuHeight } = this.el // Размеры меню
+        const { innerWidth: windowWidth, innerHeight: windowHeight } = window // Размеры окна
 
-        if ((window.innerWidth - clickX) < this.el.offsetWidth) {
-            this.el.style.left = `${clickX - this.el.offsetWidth}px`
-        } else {
-            this.el.style.left = `${clickX}px`
-        }
+        // Установка значений координат для меню и проверка если клик произошел близко к правому краю или низу, чтобы не уплыло
+        const left = (windowWidth - clickX < menuWidth) ? (clickX - menuWidth) : clickX
+        const top = (windowHeight - clickY < menuHeight) ? (clickY - menuHeight) : clickY
 
-        if ((window.innerHeight - clickY) < this.el.offsetHeight) {
-            this.el.style.top = `${clickY - this.el.offsetHeight}px`
-        } else {
-            this.el.style.top = `${clickY}px`
-        }
+        this.el.style.left = `${left}px`
+        this.el.style.top = `${top}px`
     }
 
-    open() {
+    open(event) {
         this.el.classList.add('open')
+        // Вызов метода для установки позиции меню с помощью event
+        // Делаем после добавления класса выше, так как если поменять местами, при первом клике высота всегда 0
+        this.setPosition(event)
     }
 
     close() {
@@ -49,6 +50,7 @@ export class ContextMenu extends Menu {
     }
 
     add(module) {
+        // Вызов метода у модуля для записи его содержимого в меню
         this.el.innerHTML += module.toHTML()
     }
 }
