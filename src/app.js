@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Событие при вызове контекстного меню
     document.addEventListener('contextmenu', (e) => {
         e.preventDefault()
-        // Передача ивента в метод, для получения координат клика
+        // Открытие меню и передача в метод координат клика
         menu.open(e)
     })
 })
