@@ -12,17 +12,17 @@ export class ContextMenu extends Menu {
         // Вызов на каждом модуле метода по добавлению его в контекстное меню
         this.modules.forEach(module => this.add(module))
         // Установка события по клику на каждый элемент меню
-        this.setupEventListeners()
+        this.el.addEventListener('click', this.clickMenuElementHandler.bind(this))
     }
 
-    setupEventListeners() {
-        this.el.addEventListener('click', (event) => {
-            const selectedModule = this.modules.find(m => m.type === event.target.dataset.type)
-            if (selectedModule) {
-                selectedModule.trigger()
-                this.close()
-            }
-        })
+    clickMenuElementHandler(event) {
+        // Находим элемент на который кликнули по типу
+        const selectedModule = this.modules.find(m => m.type === event.target.dataset.type)
+        if (selectedModule) {
+            // Если он есть запускаем метод вызова фичи и закрываем меню
+            selectedModule.trigger()
+            this.close()
+        }
     }
 
     setPosition(event) {
