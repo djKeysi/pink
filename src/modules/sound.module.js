@@ -12,9 +12,12 @@ export class SoundModule extends Module{
      console.log(this.text);
 
         if(this.text === 'Звук'){
-       
-            const myAudio = new Audio(myAudiolResource);
-            myAudio.play();
+            var arrSound = ['../../assets/sound/1.mp3', '../../assets/sound/2.mp3','../../assets/sound/3.mp3','../../assets/sound/4.mp3'];
+    var randomSound = Math.floor(Math.random() * arrSound.length);
+    var audio = new Audio(arrSound[randomSound]);
+    audio.play();
+            // const myAudio = new Audio("../../assets/sound/1.mp3");
+            // myAudio.play();
            
             console.log("ffff");
             

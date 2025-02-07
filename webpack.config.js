@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
-const SRC = path.resolve(__dirname, 'node_modules');
+
 
 module.exports = (env, argv) => {
   const isProd = argv.mode === 'production'
