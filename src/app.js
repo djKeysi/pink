@@ -8,7 +8,6 @@ window.addEventListener('contextmenu', (event) => {
     event.preventDefault()
     menuBlock.innerHTML = new ContextMenu('.menu').open()
 
-    menuBlock.style.display = 'block'
     menuBlock.style.left = `${event.pageX}px`
     menuBlock.style.top = `${event.pageY}px`
 
@@ -20,6 +19,5 @@ menuBlock.addEventListener('click', (event) => {
         case 'message-module':
             new MessageModule('message-module', 'Сообщение').trigger();
     }
-    menuBlock.style.display = 'none'
     menuBlock.classList.remove('open')
 })
