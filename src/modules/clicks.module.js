@@ -50,6 +50,25 @@ export class ClickCounter extends Module {
             modal.appendChild(button);
         });
 
+        const buttonModal = document.createElement('button')
+        buttonModal.textContent = 'Отмена';
+        buttonModal.style.display = 'inline-block';
+        buttonModal.style.backgroundColor = '#ff5555';
+        buttonModal.style.color = '#fff';
+        buttonModal.style.padding = '5px 10px';
+        buttonModal.style.border = 'none';
+        buttonModal.style.marginTop = '15px'
+        buttonModal.addEventListener('mousedown', () => {
+          buttonModal.style.transform = 'scale(0.9)';
+      });
+      buttonModal.addEventListener('mouseup', () => {
+        buttonModal.style.transform = 'scale(1)';
+      });
+      buttonModal.addEventListener('click', function() {
+        modal.remove()
+      })
+      modal.append(buttonModal)
+
         document.body.appendChild(modal);
     }
 
