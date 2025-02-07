@@ -40,3 +40,36 @@ body {
 .menu .menu-item:hover {
     background: #343434;
 }
+
+
+/* Message */
+
+.message-module {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 350px;
+    height: 70px;
+    border-radius: 10px;
+    color: white;
+    fill: white!important;
+}
+
+.message-module__title-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    border-bottom: 1px solid #1b1a1a;
+}
+
+.message-module__img {
+    width: 20px;
+    height: 20px;
+    filter: invert(100%) sepia(6%) saturate(23%) hue-rotate(166deg) brightness(104%) contrast(108%)
+}
+
+.message-module__title {
+    font-size: medium;
+}
