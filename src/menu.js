@@ -1,10 +1,17 @@
 import { Menu } from './core/menu'
+// import { TimerModule } from './modules/timer.module'
 
 export class ContextMenu extends Menu {
 
     constructor(selector, clickPosition) {
+        const modules = [
+            // new TimerModule('timer', 'Запустить таймер'),
+        ]
+
         super(selector)
+        this.el.innerHTML = ''
         this.setPosition(clickPosition)
+        modules.forEach(module => this.add(module))
     }
 
     setPosition(clickPosition) {
@@ -29,5 +36,9 @@ export class ContextMenu extends Menu {
 
     close() {
         this.el.classList.remove('open')
+    }
+
+    add(module) {
+        this.el.innerHTML += module.toHTML()
     }
 }
