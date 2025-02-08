@@ -2,6 +2,8 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+
+
 module.exports = (env, argv) => {
   const isProd = argv.mode === 'production'
   const isDev = !isProd
@@ -64,9 +66,14 @@ module.exports = (env, argv) => {
           }
         },
         {
+          
+          test: /\.(mp3|wav)$/,
+          loader: "file-loader",
+      },
+      {
           test: /\.(png|svg|jpg|jpeg|gif)$/i,
           type: 'asset/resource',
-        },
+        }
       ],
     }
   }

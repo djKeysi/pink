@@ -1,7 +1,5 @@
 import { Menu } from './core/menu'
-import { BackgroundModule } from './modules/background.module'
-import { BmiPanel } from './modules/bmipanel'
-import { MessageModule } from './modules/message.module'
+
 // import { TimerModule } from './modules/timer.module'
 
 export class ContextMenu extends Menu {
@@ -15,6 +13,8 @@ export class ContextMenu extends Menu {
 
             // Все модули указываются по примеру через запятую, вверху только заимпортить
             // new TimerModule('timer', 'Запустить таймер'),
+            new SoundModule('sound','Случайный звук'),
+            new MessageModule('message','Кастомное сообщение')
         ]
         // Вызов на каждом модуле метода по добавлению его в контекстное меню
         this.modules.forEach(module => this.add(module))
@@ -40,7 +40,7 @@ export class ContextMenu extends Menu {
         // Установка значений координат для меню и проверка если клик произошел близко к правому краю или низу, чтобы не уплыло
         const left = (windowWidth - clickX < menuWidth) ? (clickX - menuWidth) : clickX
         const top = (windowHeight - clickY < menuHeight) ? (clickY - menuHeight) : clickY
-
+       
         this.el.style.left = `${left}px`
         this.el.style.top = `${top}px`
     }

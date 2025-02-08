@@ -12,5 +12,3 @@ document.addEventListener('DOMContentLoaded', () => {
         menu.open(e)
     })
 })
-
-
