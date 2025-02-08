@@ -1,49 +1,3 @@
-<<<<<<< HEAD
-import {Menu} from './core/menu'
-import { SoundModule } from './modules/sound.module';
-console.log('ddd2');
-
-export class ContextMenu extends Menu {
-    constructor(selector){
-        super(selector)
-   
-
-
-
-     }
-
-
-    test(e){
-
-        this.el.style.top = `${e.pageY}px`;
-        this.el.style.left = `${e.pageX}px`;
-        this.el.classList.add('open')
-        //console.log(  this.el.style.left);
-        
-       // this.el.classList.add('open')
-    }
-    add(){
-
-       
-        const LiElement = document.createElement('li')
-        const soundModule = new SoundModule("Type",'Звук')
-
-        LiElement.innerHTML = soundModule.toHTML()
-
-        LiElement.addEventListener('click',(event)=>{
-           soundModule.trigger()
-           // console.log('hhhhh')
-        })
-        
-        // LiElement.textContent = soundModule.toHTML()//'cddfdf'//soundModule.trigger()
-        // LiElement.style.color = "white"
-        // LiElement.className = "menu-item"
-
-        this.el.append(LiElement)
-    }
-
-
-=======
 import { Menu } from './core/menu'
 // import { TimerModule } from './modules/timer.module'
 
@@ -60,7 +14,6 @@ export class ContextMenu extends Menu {
         // Установка события по клику на каждый элемент меню
         this.el.addEventListener('click', this.clickMenuElementHandler.bind(this))
     }
->>>>>>> 64cf6fd5444d9e41ba47daa62261b0970c0668fc
 
     clickMenuElementHandler(event) {
         // Находим элемент на который кликнули по типу
