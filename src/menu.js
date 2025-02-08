@@ -4,23 +4,20 @@ import { BmiPanel } from './modules/bmipanel'
 import { ClickCounter } from './modules/clicks.module'
 import { MessageModule } from './modules/message.module'
 import { SoundModule } from './modules/sound.module'
-
-// import { TimerModule } from './modules/timer.module'
+import { TimerModule } from './modules/timer.module'
 
 export class ContextMenu extends Menu {
     constructor(selector) {
         super(selector)
         // Массив со всеми модулями, которые будут в контекстном меню
         this.modules = [
+            // Все модули указываются по примеру через запятую, вверху только заимпортить
             new MessageModule(),
             new BackgroundModule(),
             new BmiPanel(),
             new SoundModule(),
             new ClickCounter(),
-            // Все модули указываются по примеру через запятую, вверху только заимпортить
-            // new TimerModule('timer', 'Запустить таймер'),
-           
-       
+            new TimerModule(),
         ]
         // Вызов на каждом модуле метода по добавлению его в контекстное меню
         this.modules.forEach(module => this.add(module))
@@ -46,7 +43,7 @@ export class ContextMenu extends Menu {
         // Установка значений координат для меню и проверка если клик произошел близко к правому краю или низу, чтобы не уплыло
         const left = (windowWidth - clickX < menuWidth) ? (clickX - menuWidth) : clickX
         const top = (windowHeight - clickY < menuHeight) ? (clickY - menuHeight) : clickY
-       
+
         this.el.style.left = `${left}px`
         this.el.style.top = `${top}px`
     }
