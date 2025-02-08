@@ -1,9 +1,7 @@
 import { Menu } from './core/menu'
-<<<<<<< HEAD
+import { BackgroundModule } from './modules/background.module'
+import { BmiPanel } from './modules/bmipanel'
 import { MessageModule } from './modules/message.module'
-=======
-
->>>>>>> 181e7861df5f3d2ab43bc0053a6c1ebf78e517a1
 // import { TimerModule } from './modules/timer.module'
 
 export class ContextMenu extends Menu {
@@ -11,13 +9,18 @@ export class ContextMenu extends Menu {
         super(selector)
         // Массив со всеми модулями, которые будут в контекстном меню
         this.modules = [
-<<<<<<< HEAD
-            new MessageModule()
+            new MessageModule(),
+            new BackgroundModule(),
+            new BmiPanel()
+
             // Все модули указываются по примеру через запятую, вверху только заимпортить
             // new TimerModule('timer', 'Запустить таймер'),
-=======
->>>>>>> 181e7861df5f3d2ab43bc0053a6c1ebf78e517a1
         ]
+        // Вызов на каждом модуле метода по добавлению его в контекстное меню
+        this.modules.forEach(module => this.add(module))
+        // Установка события по клику на каждый элемент меню
+        this.el.addEventListener('click', this.clickMenuElementHandler.bind(this))
+    }
 
     clickMenuElementHandler(event) {
         // Находим элемент на который кликнули по типу
