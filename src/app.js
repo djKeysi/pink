@@ -1,5 +1,5 @@
+import { ContextMenu } from './menu'
 import './styles.css'
-import { ContextMenu } from './menu.js'
 
 // Событие которое произойдет после загрузки DOM элементов
 document.addEventListener('DOMContentLoaded', () => {
