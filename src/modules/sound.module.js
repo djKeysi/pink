@@ -1,36 +1,20 @@
-import { Module } from '../core/module'
-import myAudioResource from '../../assets/sound/1.mp3'
+import { Module } from "../core/module";
+import { randomSound } from "../utils";
 
+export class SoundModule extends Module {
+  constructor(text, type) {
+    super(text, type);
+  }
 
-export class SoundModule extends Module{
-    constructor(text,type){
-        //this.text = text
-        super(text,type)
-    }
-
-    trigger(){
-     console.log(this.text);
-
-        if(this.text === 'Звук'){
-            var arrSound = ['../../assets/sound/1.mp3', '../../assets/sound/2.mp3','../../assets/sound/3.mp3','../../assets/sound/4.mp3'];
-    var randomSound = Math.floor(Math.random() * arrSound.length);
-    var audio = new Audio(arrSound[randomSound]);
-    audio.play();
-            // const myAudio = new Audio("../../assets/sound/1.mp3");
-            // myAudio.play();
-           
-            console.log("ffff");
-            
-
-        }
-
-    }
-    
-}
-//../../assets/sound/1.mp3'
-window.randomSound = function() {
-    var arrSound = ['../../assets/sound/1.mp3', '../../assets/sound/2.mp3'];
-    var randomSound = Math.floor(Math.random() * arrSound.length);
-    var audio = new Audio(arrSound[randomSound]);
+  trigger() {
+    const sound ="../../assets/sound/"
+    var arrSound = [
+      `${sound}1.mp3`,
+      `${sound}2.mp3`,
+      `${sound}3.mp3`,
+      `${sound}4.mp3`,
+    ];
+    const audio = new Audio(arrSound[randomSound(arrSound)]);
     audio.play();
   }
+}

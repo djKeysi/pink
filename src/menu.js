@@ -1,4 +1,5 @@
 import { Menu } from './core/menu'
+import { SoundModule } from './modules/sound.module'
 // import { TimerModule } from './modules/timer.module'
 
 export class ContextMenu extends Menu {
@@ -8,6 +9,7 @@ export class ContextMenu extends Menu {
         this.modules = [
             // Все модули указываются по примеру через запятую, вверху только заимпортить
             // new TimerModule('timer', 'Запустить таймер'),
+            new SoundModule('sound','Случайный звук')
         ]
         // Вызов на каждом модуле метода по добавлению его в контекстное меню
         this.modules.forEach(module => this.add(module))
