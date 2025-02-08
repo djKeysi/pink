@@ -61,13 +61,17 @@ export class ClickCounter extends Module {
             this.timerRunning = false;
 
             const panelInfo = document.createElement('div')
-            panelInfo.style.background = 'linear-gradient(90deg,rgb(115, 198, 231),rgb(219, 113, 113))'
-            panelInfo.style.display = 'flex';
-            panelInfo.style.flexDirection = 'column';
-            panelInfo.style.alignItems = 'center';
-            panelInfo.style.border = '1px solid black';
-            panelInfo.style.padding = '10px';
-            panelInfo.style.margin = 'auto'
+            panelInfo.style.position = 'fixed';
+            panelInfo.style.top = '50%';
+            panelInfo.style.left = '50%';
+            panelInfo.style.transform = 'translate(-50%, -50%)';
+            panelInfo.style.backgroundColor = '#fff';
+            panelInfo.style.border = '1px solid #000';
+            panelInfo.style.padding = '20px';
+            panelInfo.style.zIndex = '1000';
+            panelInfo.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+            panelInfo.style.borderRadius = '5px';
+            panelInfo.style.fontFamily = 'Arial, sans-serif';
 
             const panelInfoText = document.createElement('span')
             panelInfoText.innerHTML = `Статистика кликов за ${duration / 1000} секунд: <br> Левая кнопка: ${this.leftClickCount}
@@ -106,16 +110,23 @@ export class ClickCounter extends Module {
                 console.log("Неизвестная кнопка мыши:", event.button);
         }
     }
-    
+
     createButton(text, onClick) {
+        const buttonContainer = document.createElement('div');
+        buttonContainer.style.display = 'flex';
+        buttonContainer.style.justifyContent = 'center'; 
+        buttonContainer.style.width = '100%'; 
+        buttonContainer.style.marginTop = '5px' 
+
         const buttonClose = document.createElement('button')
         buttonClose.textContent = text
         buttonClose.style.display = 'inline-block';
-        buttonClose.style.backgroundColor = '#ff5555';
-        buttonClose.style.color = '#fff';
+        buttonClose.style.backgroundColor = '#4CAF50';
+        buttonClose.style.color = 'white';
         buttonClose.style.padding = '5px 10px';
         buttonClose.style.border = 'none';
-        buttonClose.style.marginTop = '15px'
+        buttonClose.style.cursor = 'pointer'
+        buttonClose.style.borderRadius = '3px'
 
         buttonClose.addEventListener('mousedown', () => {
             buttonClose.style.transform = 'scale(0.9)';
@@ -125,7 +136,9 @@ export class ClickCounter extends Module {
         });
         buttonClose.addEventListener('click', onClick)
 
-        return buttonClose
+        buttonContainer.appendChild(buttonClose) 
+
+        return buttonContainer
     }
 
     resetCounts() {
