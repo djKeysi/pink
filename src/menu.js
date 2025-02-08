@@ -1,6 +1,5 @@
 import { Menu } from './core/menu'
-import { MessageModule } from './modules/message.module'
-import { SoundModule } from './modules/sound.module'
+
 // import { TimerModule } from './modules/timer.module'
 
 export class ContextMenu extends Menu {
@@ -8,6 +7,10 @@ export class ContextMenu extends Menu {
         super(selector)
         // Массив со всеми модулями, которые будут в контекстном меню
         this.modules = [
+            new MessageModule(),
+            new BackgroundModule(),
+            new BmiPanel()
+
             // Все модули указываются по примеру через запятую, вверху только заимпортить
             // new TimerModule('timer', 'Запустить таймер'),
             new SoundModule('sound','Случайный звук'),

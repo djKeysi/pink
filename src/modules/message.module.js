@@ -6,6 +6,9 @@ import info from "../../assets/icons/info.svg"
 import success from "../../assets/icons/success.svg"
 
 export class MessageModule extends Module {
+    constructor(){
+        super('message', 'Кастомное сообщение');
+    }
     trigger() {
 
         this.typeOfMessage = {
