@@ -33,7 +33,7 @@ export class ClickCounter extends Module {
         modal.style.zIndex = '1000'; 
         modal.style.textAlign = 'center';
 
-        const timerOptions = [3, 5, 10]; // Доступные варианты таймера
+        const timerOptions = [3, 5, 10];
 
         const title = document.createElement('p');
         title.textContent = 'Выберите длительность таймера (сек):';
@@ -50,25 +50,11 @@ export class ClickCounter extends Module {
             modal.appendChild(button);
         });
 
-        const buttonModal = document.createElement('button')
-        buttonModal.textContent = 'Отмена';
-        buttonModal.style.display = 'inline-block';
-        buttonModal.style.backgroundColor = '#ff5555';
-        buttonModal.style.color = '#fff';
-        buttonModal.style.padding = '5px 10px';
-        buttonModal.style.border = 'none';
-        buttonModal.style.marginTop = '15px'
-        buttonModal.addEventListener('mousedown', () => {
-          buttonModal.style.transform = 'scale(0.9)';
-      });
-      buttonModal.addEventListener('mouseup', () => {
-        buttonModal.style.transform = 'scale(1)';
-      });
-      buttonModal.addEventListener('click', function() {
-        modal.remove()
-      })
-      modal.append(buttonModal)
+        const buttonModal = this.createButton('Отмена',() => {
+                modal.remove();
+        })
 
+        modal.append(buttonModal)
         document.body.appendChild(modal);
     }
 
@@ -97,23 +83,8 @@ export class ClickCounter extends Module {
             panelInfoText.style.textAlign = 'center'
             panelInfoText.style.display = 'block'
 
-            const buttonClose = document.createElement('button')
-            buttonClose.textContent = 'Закрыть';
-            buttonClose.style.display = 'inline-block';
-            buttonClose.style.backgroundColor = '#ff5555';
-            buttonClose.style.color = '#fff';
-            buttonClose.style.padding = '5px 10px';
-            buttonClose.style.border = 'none';
-            buttonClose.style.marginTop = '15px'
-
-            buttonClose.addEventListener('mousedown', () => {
-                buttonClose.style.transform = 'scale(0.9)';
-            });
-            buttonClose.addEventListener('mouseup', () => {
-                buttonClose.style.transform = 'scale(1)';
-            });
-            buttonClose.addEventListener('click', function() {
-                panelInfo.remove()
+            const buttonClose = this.createButton('Закрыть', () => {
+                panelInfo.remove();
             })
 
             panelInfo.appendChild(panelInfoText)
@@ -141,6 +112,27 @@ export class ClickCounter extends Module {
             default:
                 console.log("Неизвестная кнопка мыши:", event.button);
         }
+    }
+    
+    createButton(text, onClick) {
+        const buttonClose = document.createElement('button')
+        buttonClose.textContent = text
+        buttonClose.style.display = 'inline-block';
+        buttonClose.style.backgroundColor = '#ff5555';
+        buttonClose.style.color = '#fff';
+        buttonClose.style.padding = '5px 10px';
+        buttonClose.style.border = 'none';
+        buttonClose.style.marginTop = '15px'
+
+        buttonClose.addEventListener('mousedown', () => {
+            buttonClose.style.transform = 'scale(0.9)';
+        });
+        buttonClose.addEventListener('mouseup', () => {
+            buttonClose.style.transform = 'scale(1)';
+        });
+        buttonClose.addEventListener('click', onClick)
+
+        return buttonClose
     }
 
     resetCounts() {
