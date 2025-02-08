@@ -1,6 +1,7 @@
 import { Menu } from './core/menu'
 import { ClickCounter } from './modules/clicks.module'
 import { BackgroundModule } from './modules/background.module'
+import { BmiPanel } from './modules/bmipanel'
 // import { TimerModule } from './modules/timer.module'
 
 export class ContextMenu extends Menu {
@@ -9,7 +10,9 @@ export class ContextMenu extends Menu {
         // Массив со всеми модулями, которые будут в контекстном меню
         this.modules = [
             new ClickCounter(),
-            new BackgroundModule()
+            new BackgroundModule(),
+            new BmiPanel()
+
             // Все модули указываются по примеру через запятую, вверху только заимпортить
             // new TimerModule('timer', 'Запустить таймер'),
         ]

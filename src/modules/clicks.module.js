@@ -8,11 +8,6 @@ export class ClickCounter extends Module {
         this.rightClickCount = 0;
         this.timerRunning = false;
         this.mousedownHandler = this.mousedownHandler.bind(this);
-        this.closeModal = null;
-    }
-
-    setCloseModal(closeModal) {
-        this.closeModal = closeModal;
     }
 
     trigger() {
@@ -20,8 +15,6 @@ export class ClickCounter extends Module {
     }
 
     showTimerSelection() {
-        if (this.closeModal) this.closeModal();
-
         const modal = document.createElement('div');
         modal.style.position = 'fixed';
         modal.style.top = '50%';
