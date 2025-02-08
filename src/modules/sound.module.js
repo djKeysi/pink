@@ -2,8 +2,8 @@ import { Module } from "../core/module";
 import { randomSound } from "../utils";
 
 export class SoundModule extends Module {
-  constructor(text, type) {
-    super(text, type);
+  constructor() {
+    super('sound', 'Случайный звук')
   }
 
   trigger() {

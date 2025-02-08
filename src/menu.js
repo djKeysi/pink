@@ -1,4 +1,9 @@
 import { Menu } from './core/menu'
+import { BackgroundModule } from './modules/background.module'
+import { BmiPanel } from './modules/bmipanel'
+import { ClickCounter } from './modules/clicks.module'
+import { MessageModule } from './modules/message.module'
+import { SoundModule } from './modules/sound.module'
 
 // import { TimerModule } from './modules/timer.module'
 
@@ -9,12 +14,13 @@ export class ContextMenu extends Menu {
         this.modules = [
             new MessageModule(),
             new BackgroundModule(),
-            new BmiPanel()
-
+            new BmiPanel(),
+            new SoundModule(),
+            new ClickCounter(),
             // Все модули указываются по примеру через запятую, вверху только заимпортить
             // new TimerModule('timer', 'Запустить таймер'),
-            new SoundModule('sound','Случайный звук'),
-            new MessageModule('message','Кастомное сообщение')
+           
+       
         ]
         // Вызов на каждом модуле метода по добавлению его в контекстное меню
         this.modules.forEach(module => this.add(module))
