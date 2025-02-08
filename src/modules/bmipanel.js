@@ -23,7 +23,14 @@ export class BmiPanel extends Module {
     }
 
     trigger() {
+        this.state = {
+            weight: '',
+            height: '',
+            BMItotal: 0,
+            BMIInterpretation: ''
+        };
         this.showModal();
+        this.updateTotal();
     }
 
     showModal() {
@@ -152,6 +159,12 @@ export class BmiPanel extends Module {
         submitButton.style.border = 'none';
         submitButton.style.borderRadius = '3px';
         submitButton.style.cursor = 'pointer';
+        submitButton.addEventListener('mousedown', () => {
+            submitButton.style.transform = 'scale(0.9)';
+        });
+        submitButton.addEventListener('mouseup', () => {
+            submitButton.style.transform = 'scale(1)';
+        });
     }
     
     get isValidWeight() {
@@ -182,9 +195,7 @@ export class BmiPanel extends Module {
     onSubmit(data) {
         this.state.height = data.height;
         this.state.weight = data.weight;
-
         let bmi = this.calculateBMI()
-
         this.state.BMIInterpretation =  this.interpretBMI(Number(bmi))
         this.updateTotal();
     }
@@ -196,7 +207,6 @@ export class BmiPanel extends Module {
                 weight: Number(this.state.weight),
                 height: Number(this.state.height)
             });
-
             this.$inputHeight.value = '';
             this.$inputWeight.value = '';
         }
@@ -217,7 +227,7 @@ export class BmiPanel extends Module {
         buttonClose.addEventListener('mousedown', () => {
             buttonClose.style.transform = 'scale(0.9)';
         });
-        buttonClose.addEventListener('mouseup', () => {
+        buttonClose.addEventListener('mouseuпp', () => {
             buttonClose.style.transform = 'scale(1)';
         });
         buttonClose.addEventListener('click', onClick)

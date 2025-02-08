@@ -16,7 +16,7 @@ export class SoundModule extends Module {
     ];
     const audio = new Audio(arrSound[randomSound(arrSound)]);
     audio.play();
-     const i =0
+
 
 //     const sound =Number(`../../assets/sound/1.mp3`.split('')[19])
 
