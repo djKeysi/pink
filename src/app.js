@@ -1,7 +1,6 @@
 import { ContextMenu } from './menu'
 import './styles.css'
 
-
 // Событие которое произойдет после загрузки DOM элементов
 document.addEventListener('DOMContentLoaded', () => {
     const menu = new ContextMenu('.menu')
