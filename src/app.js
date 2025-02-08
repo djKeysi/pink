@@ -1,5 +1,6 @@
 import { ContextMenu } from './menu'
 import './styles.css'
+import { ContextMenu } from './menu.js'
 
 // Событие которое произойдет после загрузки DOM элементов
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,4 +12,4 @@ document.addEventListener('DOMContentLoaded', () => {
         // Открытие меню и передача в метод координат клика
         menu.open(e)
     })
-})
+
