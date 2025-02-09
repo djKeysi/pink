@@ -54,7 +54,7 @@ body {
     height: 70px;
     border-radius: 10px;
     color: white;
-    fill: white!important;
+    fill: white !important;
 }
 
 .message-module__title-container {
@@ -72,4 +72,69 @@ body {
 
 .message-module__title {
     font-size: medium;
+}
+
+/* Timer */
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #000;
+    padding: 20px;
+    z-index: 999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    text-align: center;
+    width: 300px;
+}
+
+.input-timer {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+    margin-top: 5px;
+    font-size: 14px;
+    visibility: hidden;
+    height: 18px;
+}
+
+.button-container {
+    margin-top: 10px;
+}
+
+.button {
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 14px;
+}
+
+.timer-count {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.timer-finished {
+    font-size: 24px;
+    font-weight: bold;
+    color: green;
+}
+
+.button.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
