@@ -6,6 +6,7 @@ import { MessageModule } from './modules/message.module'
 import { SoundModule } from './modules/sound.module'
 import { TimerModule } from './modules/timer.module'
 import { ShapeModule } from './modules/shape.module'
+import { GuessNumber } from './modules/guessnumber.module'
 
 export class ContextMenu extends Menu {
     constructor(selector) {
@@ -19,7 +20,8 @@ export class ContextMenu extends Menu {
             new SoundModule(),
             new ClickCounter(),
             new TimerModule(),
-            new ShapeModule()
+            new ShapeModule(),
+            new GuessNumber()
         ]
         // Вызов на каждом модуле метода по добавлению его в контекстное меню
         this.modules.forEach(module => this.add(module))

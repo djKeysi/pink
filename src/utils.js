@@ -7,3 +7,11 @@ export function randomSound(arr) {
 export function randomColor() {
   return `hsl(${Math.random() * 360}, 100%, 50%)`
 }
+
+export function randomMessage(obj) {
+  const numberOfMessage = random(0, Object.keys(obj).length - 1)
+  const messageKeys = Object.keys(obj)
+  const currentTypeOfMessage = messageKeys[numberOfMessage]
+
+  return obj[currentTypeOfMessage]
+}

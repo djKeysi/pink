@@ -55,14 +55,22 @@ body {
     height: 70px;
     border-radius: 10px;
     color: white;
-    fill: white !important;
+    fill: white!important;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
 }
+.message-module.fade {
+    opacity: 0;
+}
+
 
 .message-module__title-container {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
     border-bottom: 1px solid #1b1a1a;
+    padding: 5px;
+    margin-bottom: 5px;
 }
 
 .message-module__img {
@@ -73,6 +81,11 @@ body {
 
 .message-module__title {
     font-size: medium;
+    padding-left: 10px;
+}
+
+.message-module__text-container {
+    text-align: center;
 }
 
 /* Timer */
