@@ -2,6 +2,7 @@ import { Menu } from './core/menu'
 import { BackgroundModule } from './modules/background.module'
 import { BmiPanel } from './modules/bmipanel'
 import { ClickCounter } from './modules/clicks.module'
+import { GuessNumber } from './modules/guessnumber.module'
 import { MessageModule } from './modules/message.module'
 import { SoundModule } from './modules/sound.module'
 
@@ -17,6 +18,7 @@ export class ContextMenu extends Menu {
             new BmiPanel(),
             new SoundModule(),
             new ClickCounter(),
+            new GuessNumber()
             // Все модули указываются по примеру через запятую, вверху только заимпортить
             // new TimerModule('timer', 'Запустить таймер'),
            

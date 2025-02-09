@@ -4,3 +4,7 @@ export function random(min, max) {
 export function randomSound(arr){
   return Math.floor(Math.random() * arr.length);
 }
+export function removeForms(){
+  const remove = document.querySelector("#forms")
+  remove.remove()
+}

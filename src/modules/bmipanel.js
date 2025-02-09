@@ -50,6 +50,7 @@ export class BmiPanel extends Module {
         this.$modal.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
         this.$modal.style.borderRadius = '5px';
         this.$modal.style.fontFamily = 'Arial, sans-serif';
+        this.$modal.id="forms"
 
         this.$modal.appendChild(this.$rootElement);
         this.$modal.appendChild(this.$formPanel);
