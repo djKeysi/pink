@@ -12,6 +12,7 @@ body {
     height: 100vh;
     width: 100%;
     padding: 2rem;
+    overflow: hidden;
 }
 
 .menu {
@@ -54,7 +55,7 @@ body {
     height: 70px;
     border-radius: 10px;
     color: white;
-    fill: white!important;
+    fill: white !important;
 }
 
 .message-module__title-container {
