@@ -4,25 +4,22 @@ import { BmiPanel } from './modules/bmipanel'
 import { ClickCounter } from './modules/clicks.module'
 import { MessageModule } from './modules/message.module'
 import { SoundModule } from './modules/sound.module'
+import { TimerModule } from './modules/timer.module'
 import { ShapeModule } from './modules/shape.module'
-
-// import { TimerModule } from './modules/timer.module'
 
 export class ContextMenu extends Menu {
     constructor(selector) {
         super(selector)
         // Массив со всеми модулями, которые будут в контекстном меню
         this.modules = [
+            // Все модули указываются по примеру через запятую, вверху только заимпортить
             new MessageModule(),
             new BackgroundModule(),
             new BmiPanel(),
             new SoundModule(),
             new ClickCounter(),
+            new TimerModule(),
             new ShapeModule()
-            // Все модули указываются по примеру через запятую, вверху только заимпортить
-            // new TimerModule('timer', 'Запустить таймер'),
-
-
         ]
         // Вызов на каждом модуле метода по добавлению его в контекстное меню
         this.modules.forEach(module => this.add(module))
