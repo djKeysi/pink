@@ -74,8 +74,7 @@ export class GuessNumber extends Module {
 
   handleButton() {
     const randomNumber = random(0, 10);
-    console.log("randomNumber", randomNumber);
-    if (randomNumber === this.handleInput()) {
+      if (randomNumber === this.handleInput()) {
       this.setChecklabel("ПОЗДРАВЛЯЮ тебе повезло !!!", "green");
     } else {
       this.setChecklabel("Ты какой то не счастливый, рискни еще раз :)", "red");
